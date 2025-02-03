@@ -28,7 +28,6 @@ function fibsRec(n) {
   else {
 
 
-
     const arr = fibsRec(n - 1);
     return arr.concat(arr[arr.length - 2] + arr[arr.length - 1]);
 
@@ -36,6 +35,4 @@ function fibsRec(n) {
 }
 
 console.log(fibsRec(8));
-
-
 
