@@ -1,0 +1,206 @@
+you can just run node <filename>
+---
+
+TIP!
+
+In the video. The first thing David does is split the array. Then he does recursion because he splits the array again, then again until finally the base case (one number is left) is met. At that point, the rest of the algorithm runs which is to sort the right half. Sorting the right half is recursive also. At some point after that is done, the final step is to merge. And merge is done in a very specific way. There are multiple videos in the lesson that explain the merge algorithm. So that merge algorithm is like an entire other function that takes the left and right half arrays and merges them and gives a final merged and sorted result which is then returned by merge sort. Try to get a pen and paper and work out the steps for how to sort an array of 4 or 5 numbers. If you cannot work out how the computer will do it then your code will not work.
+
+--
+
+mergeSort is simply break array in half untill you cant and sort then merge
+
+PSEUDO CODE OF THE MERGED SORT
+
+I.
+
+-split the array as evenly as possibly.  (I need to find a js method for this)
+
+---> Possible method (
+
+let marray = [x,x,x ...]
+
+let halfway = Math.floor(marray.length / 2)
+
+let firsthalf = marray.slice(0, halfway); -----------> left half of the array ----> it needs to divided into half also.
+
+let secondhalf = marray.slice(halfway, marray.length); ------> second half of the array ----> it needs to divided into half also.
+
+
+firsthalf will be like marray ()
+
+
+)
+
+-keep doing this until each array value turns into an array which have only one value (themselves). 
+
+(
+
+let halfway = Math.floor(yourArray.length / 2)
+
+
+)
+
+-when these split arrays have only one item they would hit the base code.
+
+-select the item with the minimum value and add it to array
+
+-add the other item to the array.
+
+
+
+II.
+
+
+
+-
+
+a. Two function will be used for mergesort ---> mergeSort and merge. mergeSort for splitting the arrays into halves and merge for merging and sorting.
+
+b. Merge function will be called by mergeSort.
+
+c. Random array should be passed only as the argument of the mergeSort function when it is called.
+
+
+Methods that can be used in the mergeSort and merge functions.
+
+- mergeSort function need to keep split the arrays into halves as evenly as possible until it reaches to base case(1) soo,
+
+---> split with a specific code that halves an array no matter the size. (for mergeSort) 
+
+---> (for merging) concat method can be used. (for sorting) search for sort methods other than sort() .
+
+----
+
+Focus on one task at hand
+
+mergeSort (for splitting)
+
+Rule of splitting ---> when to main array split into two half, this splitting should continue from the first half of main array until every item on the first become an array themselves, after this same thing should be done for the right half. In other words, right half should be split until first half is split (every item of the left half of the main array should become array themselves by splitting)
+
+WARNING ---> array is n.  ( Array example = [105, 79, 100, 110] )  --- At first left half of the main should be split and sorted/merged after this the right half of the main should be split and sorted/merged.
+
+ii. let halfway = Math.floor(n.length / 2);
+
+iii. let firsthalf = marray.slice(0, halfway);--> [105, 79]
+
+iv. let secondhalf = marray.slice(halfway, n.length); --> [100, 110]
+
+(Stuck ----> 
+
+.how to add the code above to the recursive case
+
+.how to split them
+
+.as the splitting should continue from the left half after the first split is made, idk how to find a code to do this, 
+
+)
+
+
+(!!! NEW IDEA -----> we may use two parameters for the split function (mergeSort) and define two variables for left and right.  OBJECTION ---> As we use only one argument when calling the function, we'd get undefined as a result.
+
+First half of the main array should be split and then sorted/merged, after this same action should be done for the right array of the main array. We have two sorted arrays now and it seems that the function that is going to merge/sort them should have TWO parameters. But I need to use only one argument when calling split function (mergeSort)
+
+)
+
+!!! NEW CODE SO FAR {
+
+function mergeSort(arr, start, end) {
+    if (start == end) {
+        return;
+    }
+
+    let mid = (start+end)/2;
+    //sort left side
+    mergeSort(arr, start, mid);
+    //sort right side
+    mergeSort(arr, mid+1, end);
+}
+
+
+
+}
+
+ --- KEEP THIS IN MIND! ---
+---> Possible method (
+
+let marray = [x,x,x ...]
+
+let halfway = Math.floor(marray.length / 2)
+
+let firsthalf = marray.slice(0, halfway); -----------> left half of the array ----> it needs to divided into half also.
+
+let secondhalf = marray.slice(halfway, marray.length); ------> second half of the array ----> it needs to divided into half also.
+
+-----
+
+
+-----------
+
+
+JS array methods that can be used for this exercise ---> sort, split, splice, concat, length(?).
+
+
+Syntax of certain JS methods 
+
+---> function(sort) sortArray() {
+    let numbers = [5, 2, 9, 1, 6];
+    console.log("Before sorting:", numbers);
+    numbers.sort((a, b) => a - b);  // Ascending order
+    console.log("After sorting:", numbers);
+}
+
+sortArray();
+// Output: Before sorting: [5, 2, 9, 1, 6]
+//         After sorting: [1, 2, 5, 6, 9]
+
+
+---->split()       function splitString() {
+    let text = "Hello, how are you?";
+    console.log("Original string:", text);
+    let words = text.split(" ");  // Split by space
+    console.log("Split words:", words);
+}
+
+splitString();
+// Output: Original string: Hello, how are you?
+//         Split words: ["Hello,", "how", "are", "you?"]
+
+---->(splice)   function spliceArray() {
+    let colors = ["red", "blue", "green", "yellow"];
+    console.log("Before splice:", colors);
+    colors.splice(2, 1, "purple");  // Removes "green", adds "purple"
+    console.log("After splice:", colors);
+}
+
+spliceArray();
+// Output: Before splice: ["red", "blue", "green", "yellow"]
+//         After splice: ["red", "blue", "purple", "yellow"]
+
+
+----> (concat) function concatArrays() {
+    let arr1 = [1, 2, 3];
+    let arr2 = [4, 5, 6];
+    console.log("First array:", arr1);
+    console.log("Second array:", arr2);
+    let merged = arr1.concat(arr2);
+    console.log("Concatenated array:", merged);
+}
+
+concatArrays();
+// Output: First array: [1, 2, 3]
+//         Second array: [4, 5, 6]
+//         Concatenated array: [1, 2, 3, 4, 5, 6]
+
+
+----> (length) function arrayLength() {
+    let fruits = ["apple", "banana", "cherry", "date"];
+    console.log("Array:", fruits);
+    console.log("Array length:", fruits.length);
+}
+
+arrayLength();
+// Output: Array: ["apple", "banana", "cherry", "date"]
+//         Array length: 4
+
+
+

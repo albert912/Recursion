@@ -1,0 +1,129 @@
+split
+
+function mergeSort(arr, start, end) {
+    if (start == end) {
+        return;
+    }
+
+    let mid = (start+end)/2;
+    //sort left side
+    mergeSort(arr, start, mid);
+    //sort right side
+    mergeSort(arr, mid+1, end);
+    //merge sorted arrays
+    merge(arr, start, end, mid);
+}
+
+//However in this case, the left and right array are in the form of index. and main array is as it is.
+
+Think about how you might go about solving this one
+
+1) calculate leftSize and rightSize 
+
+2) Create new array left and right.
+
+3) Fill the new arrays with respective values.
+
+4) Now carry out the same process as we did in that question by merging them in a sorted manner inside main array (arr)
+answer me step by step, it would be easier for you
+
+arr = [1,2,5,8,4,6,11,16,20,25];
+
+start = 2;
+end = 7;
+mid = 4;
+
+first half size = mid - start +1;
+
+second half size = end - (mid +1 )+1
+
+
+
+merge
+
+function merge(arr) 
+
+  const left = [1, 4, 6, 8];
+  const right = [2, 5, 7, 11];
+  const arr = [];
+
+  let leftIndex = 0;
+  let rightIndex = 0;
+
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex] {
+      arr.push(left[leftIndex]);
+      leftIndex++;
+    } else {
+      arr.push(right[rightIndex]);
+      rightIndex++;
+    }
+}
+
+// If left.length > right.length, then there are remaining elements in left and none in right. This loop won't execute otherwise.
+  while (leftIndex < left.length) {
+    arr.push(left[leftIndex]);
+    leftIndex++;
+  }
+
+// If right.length > left.length, then there are remaining elements in right and none in left. This loop won't execute otherwise.
+  while (rightIndex < right.length) {
+    arr.push(right[rightIndex]);
+    rightIndex++
+  }
+
+
+function merge(arr, start, mid, end) {
+  const left = [];
+  const right = [];
+
+  const leftSize = mid - start + 1;
+  const rightSize = end - mid;
+
+  let mainArrayIndex = start;
+
+  // Fill left array
+  for (let i = 0; i < leftSize; i++) {
+    left.push(arr[mainArrayIndex]);
+    mainArrayIndex++;
+  }
+  // Fill right array.
+  for (let i = 0; i < rightSize; i++) {
+     right.push(arr[mainArrayIndex]);
+    mainArrayIndex++;
+  }
+}
+
+
+so you have a leftIndex and leftSize. a rightIndex and rightSize.
+
+All that's left is copy paste the entire thing from that question we did.
+
+Only difference here is that you need yo keep track of the main array index. It's initial value should be start (since start is the first index)
+can you give me a code for this part by yourself?
+refer to the question you solved on merging two sorted arrays.
+
+
+function mergeSort(arr, start, end) {
+    if (start == end) {
+        return;
+    }
+
+    let mid = (start+end)/2;
+    //sort left side
+    mergeSort(arr, start, mid);
+    //sort right side
+    mergeSort(arr, mid+1, end);
+    //merge sorted arrays
+    merge(arr, start, end, mid);
+}
+
+
+
+
+
+
+
+
+
+
